@@ -309,46 +309,46 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-4">
             {/* Win Rate */}
             <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3.5 shadow-sm">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
                 <Award className="h-3.5 w-3.5 text-emerald-500" /> Win Rate 30D
               </span>
               <p className="font-mono text-xl font-extrabold text-emerald-500 mt-1">
                 {bot.winRate}%
               </p>
-              <span className="text-[10px] text-slate-500 font-sans">{bot.totalTrades} tranzacții executate</span>
+              <span className="text-xs text-slate-500 font-sans">{bot.totalTrades} tranzacții executate</span>
             </div>
 
             {/* Profit Factor */}
             <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3.5 shadow-sm">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
                 <TrendingUp className="h-3.5 w-3.5 text-cyan-500" /> Profit Factor
               </span>
               <p className="font-mono text-xl font-extrabold text-cyan-300 mt-1">
                 {bot.profitFactor} PF
               </p>
-              <span className="text-[10px] text-slate-500 font-sans">Avg Win: +${bot.avgWin}</span>
+              <span className="text-xs text-slate-500 font-sans">Avg Win: +${bot.avgWin}</span>
             </div>
 
             {/* Max Drawdown */}
             <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3.5 shadow-sm">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
                 <ShieldAlert className="h-3.5 w-3.5 text-rose-500" /> Max Drawdown
               </span>
               <p className="font-mono text-xl font-extrabold text-rose-500 mt-1">
                 -{bot.maxDrawdown}%
               </p>
-              <span className="text-[10px] text-slate-500 font-sans">Prag siguranță: {bot.settings.maxDrawdownPct}%</span>
+              <span className="text-xs text-slate-500 font-sans">Prag siguranță: {bot.settings.maxDrawdownPct}%</span>
             </div>
 
             {/* Sharpe Ratio */}
             <div className="rounded-2xl border border-slate-800 bg-slate-950/70 p-3.5 shadow-sm">
-              <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+              <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
                 <Activity className="h-3.5 w-3.5 text-amber-500" /> Sharpe Ratio
               </span>
               <p className="font-mono text-xl font-extrabold text-amber-300 mt-1">
                 {bot.sharpeRatio}
               </p>
-              <span className="text-[10px] text-slate-500 font-sans">Timp mediu: {bot.avgTradeTime}</span>
+              <span className="text-xs text-slate-500 font-sans">Timp mediu: {bot.avgTradeTime}</span>
             </div>
           </div>
 
@@ -369,7 +369,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                     <Loader2 className="h-6 w-6 text-emerald-500 animate-spin" />
                     <div className="text-left">
                       <span className="block text-sm font-bold text-emerald-300">Generare Analiză Strategică AI...</span>
-                      <span className="block text-[10px] text-slate-500 uppercase tracking-wider">SRE-STRATEGIST se conectează la Quantum Engine</span>
+                      <span className="block text-xs text-slate-500 uppercase tracking-wider">SRE-STRATEGIST se conectează la Quantum Engine</span>
                     </div>
                   </>
                 ) : (
@@ -380,7 +380,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                     </div>
                     <div className="text-left">
                       <span className="block text-sm font-bold text-slate-100">Solicită Deep Insights de la SRE-STRATEGIST</span>
-                      <span className="block text-[10px] text-slate-400 uppercase tracking-wider">Analiză multi-vectorială bazată pe Gemini 3.8</span>
+                      <span className="block text-xs text-slate-400 uppercase tracking-wider">Analiză multi-vectorială bazată pe Gemini 3.8</span>
                     </div>
                   </>
                 )}
@@ -394,11 +394,11 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                     </div>
                     <div>
                       <h4 className="text-sm font-bold text-white uppercase tracking-tight">SRE-STRATEGIST Analysis Report</h4>
-                      <p className="text-[10px] text-slate-400 uppercase tracking-wider">Confidence Level: 98.4% | Verified Protocol</p>
+                      <p className="text-xs text-slate-400 uppercase tracking-wider">Confidence Level: 98.4% | Verified Protocol</p>
                     </div>
                   </div>
                   <div className="text-right">
-                    <span className="text-[10px] text-slate-500 block font-mono">SRE-SCORE</span>
+                    <span className="text-xs text-slate-500 block font-mono">SRE-SCORE</span>
                     <span className="text-2xl font-extrabold text-emerald-500 font-mono tracking-tighter">
                       {aiAnalysis.strategic_score}/100
                     </span>
@@ -407,7 +407,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
 
                 <div className="space-y-4">
                   <div className="rounded-xl bg-slate-950/60 p-4 border border-slate-800/80">
-                    <span className="text-[10px] font-bold text-emerald-500 uppercase block mb-1">Executive Summary</span>
+                    <span className="text-xs font-bold text-emerald-500 uppercase block mb-1">Executive Summary</span>
                     <p className="text-xs text-slate-200 leading-relaxed italic italic-quotes">
                       "{aiAnalysis.summary}"
                     </p>
@@ -415,7 +415,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
 
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                     <div className="rounded-xl bg-slate-950/60 p-4 border border-slate-800/80">
-                      <span className="text-[10px] font-bold text-cyan-500 uppercase block mb-2">Efficiency Rating</span>
+                      <span className="text-xs font-bold text-cyan-500 uppercase block mb-2">Efficiency Rating</span>
                       <span className="inline-flex items-center gap-1.5 rounded-lg bg-cyan-500/10 border border-cyan-500/30 px-3 py-1 text-xs font-bold text-cyan-300">
                         <Sparkles className="h-3 w-3" />
                         {aiAnalysis.efficiency_rating}
@@ -423,15 +423,15 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                     </div>
 
                     <div className="rounded-xl bg-slate-950/60 p-4 border border-slate-800/80">
-                      <span className="text-[10px] font-bold text-amber-500 uppercase block mb-2">Risk Assessment</span>
-                      <p className="text-[11px] text-slate-300">
+                      <span className="text-xs font-bold text-amber-500 uppercase block mb-2">Risk Assessment</span>
+                      <p className="text-xs text-slate-300">
                         {aiAnalysis.risk_assessment}
                       </p>
                     </div>
                   </div>
 
                   <div className="rounded-xl bg-slate-950/60 p-4 border border-slate-800/80">
-                    <span className="text-[10px] font-bold text-emerald-500 uppercase block mb-3">Strategic Recommendations</span>
+                    <span className="text-xs font-bold text-emerald-500 uppercase block mb-3">Strategic Recommendations</span>
                     <ul className="space-y-2">
                       {aiAnalysis.strategic_recommendations.map((rec: string, i: number) => (
                         <li key={i} className="flex items-start gap-2 text-xs text-slate-300">
@@ -445,7 +445,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
 
                 <button
                   onClick={() => setAiAnalysis(null)}
-                  className="mt-6 text-[10px] text-slate-500 hover:text-slate-300 uppercase font-bold tracking-wider block mx-auto transition-colors"
+                  className="mt-6 text-xs text-slate-500 hover:text-slate-300 uppercase font-bold tracking-wider block mx-auto transition-colors"
                 >
                   Regenerează analiză proaspătă
                 </button>
@@ -465,7 +465,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                     <h4 className="font-mono text-sm font-extrabold text-yellow-300 flex items-center gap-1.5">
                       <span>FIBONACCI ANALYSIS & GOLDEN RATIO CONFLUENCE</span>
                     </h4>
-                    <p className="text-[11px] text-yellow-200/80 font-sans">
+                    <p className="text-xs text-yellow-200/80 font-sans">
                       Nivel cheie: <strong className="text-yellow-300">{fibonacciLevelData.primaryLevel}</strong>
                     </p>
                   </div>
@@ -480,7 +480,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
 
               {/* Grafic distribuție intrări pe niveluri Fibonacci */}
               <div>
-                <span className="text-[10px] font-bold uppercase tracking-wider text-yellow-400/90 block mb-2 font-mono">
+                <span className="text-xs font-bold uppercase tracking-wider text-yellow-400/90 block mb-2 font-mono">
                   Distribuția Intrărilor pe Niveluri Fibonacci (Historic 30D):
                 </span>
 
@@ -494,7 +494,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                         </span>
                         <div className="flex items-center gap-3">
                           <span className="text-yellow-300 font-bold">{item.share}% pondere</span>
-                          <span className="text-emerald-500 text-[11px]">({item.winRate}% win rate)</span>
+                          <span className="text-emerald-500 text-xs">({item.winRate}% win rate)</span>
                         </div>
                       </div>
 
@@ -586,7 +586,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                 <h4 className="text-xs font-bold uppercase tracking-wider text-slate-300 flex items-center gap-1.5 font-mono">
                   <Zap className="h-3.5 w-3.5 text-amber-500" /> Ultimele 10 Tranzacții Executate
                 </h4>
-                <p className="text-[11px] text-slate-500 font-sans">
+                <p className="text-xs text-slate-500 font-sans">
                   Istoric detaliat din jurnalul de execuție al botului
                 </p>
               </div>
@@ -605,7 +605,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
             <div className="mt-3 overflow-x-auto">
               <table className="w-full text-left font-mono text-xs">
                 <thead>
-                  <tr className="border-b border-slate-800 text-[10px] font-bold uppercase text-slate-400">
+                  <tr className="border-b border-slate-800 text-xs font-bold uppercase text-slate-400">
                     <th className="py-2 px-2">Data/Oră</th>
                     <th className="py-2 px-2">Direcție</th>
                     <th className="py-2 px-2">Preț Intrare</th>
@@ -619,10 +619,10 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                     const isWin = t.profit >= 0;
                     return (
                       <tr key={t.id} className="hover:bg-slate-900/50 transition-colors">
-                        <td className="py-2 px-2 text-slate-400 text-[11px]">{t.timestamp}</td>
+                        <td className="py-2 px-2 text-slate-400 text-xs">{t.timestamp}</td>
                         <td className="py-2 px-2">
                           <span
-                            className={`rounded px-1.5 py-0.5 text-[10px] font-bold ${
+                            className={`rounded px-1.5 py-0.5 text-xs font-bold ${
                               t.side === 'BUY'
                                 ? 'bg-emerald-500/20 text-emerald-300 border border-emerald-500/30'
                                 : 'bg-rose-500/20 text-rose-300 border border-rose-500/30'
@@ -638,7 +638,7 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                             {isWin ? '+' : ''}${t.profit}
                           </span>
                         </td>
-                        <td className="py-2 px-2 text-right text-slate-400 text-[11px]">
+                        <td className="py-2 px-2 text-right text-slate-400 text-xs">
                           {t.durationMinutes} min
                         </td>
                       </tr>
@@ -672,27 +672,27 @@ export const BotAnalysisModal: React.FC<BotAnalysisModalProps> = ({
                 {/* Parametri Tehnici Grid */}
                 <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 font-mono text-xs pt-1">
                   <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-2.5">
-                    <span className="text-slate-500 text-[10px] block">ADX THRESHOLD:</span>
+                    <span className="text-slate-500 text-xs block">ADX THRESHOLD:</span>
                     <span className="font-bold text-cyan-300">&gt; {bot.technicalParameters.adxThreshold}</span>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-2.5">
-                    <span className="text-slate-500 text-[10px] block">WHALE INTENSITY:</span>
+                    <span className="text-slate-500 text-xs block">WHALE INTENSITY:</span>
                     <span className="font-bold text-purple-300">&gt; {bot.technicalParameters.whaleThreshold}%</span>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-2.5">
-                    <span className="text-slate-500 text-[10px] block">TIMEFRAME:</span>
+                    <span className="text-slate-500 text-xs block">TIMEFRAME:</span>
                     <span className="font-bold text-slate-200">{bot.technicalParameters.timeframe}</span>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-2.5">
-                    <span className="text-slate-500 text-[10px] block">STOP LOSS:</span>
+                    <span className="text-slate-500 text-xs block">STOP LOSS:</span>
                     <span className="font-bold text-rose-500">{bot.technicalParameters.stopLossPips} pips</span>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-2.5">
-                    <span className="text-slate-500 text-[10px] block">TAKE PROFIT RATIO:</span>
+                    <span className="text-slate-500 text-xs block">TAKE PROFIT RATIO:</span>
                     <span className="font-bold text-emerald-500">{bot.technicalParameters.takeProfitRatio}</span>
                   </div>
                   <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-2.5">
-                    <span className="text-slate-500 text-[10px] block">MAX LOT SIZE:</span>
+                    <span className="text-slate-500 text-xs block">MAX LOT SIZE:</span>
                     <span className="font-bold text-amber-300">{bot.settings.maxLotSize} Lots</span>
                   </div>
                 </div>

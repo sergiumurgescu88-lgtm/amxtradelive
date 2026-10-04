@@ -75,7 +75,7 @@ export const FleetAdvisor: React.FC<FleetAdvisorProps> = ({ bots, account, senti
         <div className="space-y-6 animate-in fade-in zoom-in-95 duration-500">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div className="rounded-2xl bg-slate-950/80 p-5 border border-slate-800">
-              <span className="text-[10px] font-bold text-emerald-500 uppercase block mb-1">Trinity Stability Index</span>
+              <span className="text-xs font-bold text-emerald-500 uppercase block mb-1">Trinity Stability Index</span>
               <div className="flex items-baseline gap-2">
                 <span className="text-4xl font-extrabold text-white font-mono">{report.stability_index}</span>
                 <span className="text-slate-500 text-sm">/ 100</span>
@@ -89,7 +89,7 @@ export const FleetAdvisor: React.FC<FleetAdvisorProps> = ({ bots, account, senti
             </div>
 
             <div className="md:col-span-2 rounded-2xl bg-emerald-500/5 p-5 border border-emerald-500/20">
-              <span className="text-[10px] font-bold text-emerald-500 uppercase block mb-2 flex items-center gap-1.5">
+              <span className="text-xs font-bold text-emerald-500 uppercase block mb-2 flex items-center gap-1.5">
                 <ShieldCheck className="h-3.5 w-3.5" /> Fleet Strategic Directive
               </span>
               <p className="text-sm text-slate-200 leading-relaxed font-medium">
@@ -101,7 +101,7 @@ export const FleetAdvisor: React.FC<FleetAdvisorProps> = ({ bots, account, senti
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
             {report.domain_allocations.map((alloc: any, i: number) => (
               <div key={i} className="rounded-xl bg-slate-950/60 p-4 border border-slate-800/80">
-                <span className="text-[10px] font-bold text-cyan-500 uppercase block mb-2">{alloc.domain}</span>
+                <span className="text-xs font-bold text-cyan-500 uppercase block mb-2">{alloc.domain}</span>
                 <p className="text-xs text-slate-300 leading-tight">
                   {alloc.recommendation}
                 </p>

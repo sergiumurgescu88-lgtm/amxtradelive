@@ -129,28 +129,28 @@ const BotCardComponent: React.FC<BotCardProps> = ({
     switch (status) {
       case 'ÎN TRADE':
         return (
-          <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 font-mono text-[10px] font-bold text-emerald-300">
+          <span className="flex items-center gap-1.5 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2.5 py-0.5 font-mono text-xs font-bold text-emerald-300">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
             ÎN TRADE
           </span>
         );
       case 'SCANNING':
         return (
-          <span className="flex items-center gap-1.5 rounded-full border border-cyan-500/40 bg-cyan-500/15 px-2.5 py-0.5 font-mono text-[10px] font-bold text-cyan-300">
+          <span className="flex items-center gap-1.5 rounded-full border border-cyan-500/40 bg-cyan-500/15 px-2.5 py-0.5 font-mono text-xs font-bold text-cyan-300">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
             SCANNING
           </span>
         );
       case 'COOLDOWN':
         return (
-          <span className="flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/15 px-2.5 py-0.5 font-mono text-2xs font-semibold text-amber-300">
+          <span className="flex items-center gap-1.5 rounded-full border border-amber-500/40 bg-amber-500/15 px-2.5 py-0.5 font-mono text-xs font-semibold text-amber-300">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
             COOLDOWN
           </span>
         );
       case 'PAUSED':
         return (
-          <span className="flex items-center gap-1.5 rounded-full border border-rose-500/40 bg-rose-500/15 px-2.5 py-0.5 font-mono text-2xs font-semibold text-rose-300">
+          <span className="flex items-center gap-1.5 rounded-full border border-rose-500/40 bg-rose-500/15 px-2.5 py-0.5 font-mono text-xs font-semibold text-rose-300">
             <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
             PAUSED
           </span>
@@ -162,20 +162,20 @@ const BotCardComponent: React.FC<BotCardProps> = ({
   const getBiasBadge = () => {
     if (bot.bias === 'BUY') {
       return (
-        <span className="inline-flex items-center gap-1 rounded bg-emerald-500/20 px-1.5 py-0.5 font-mono text-2xs font-bold text-emerald-300">
+        <span className="inline-flex items-center gap-1 rounded bg-emerald-500/20 px-1.5 py-0.5 font-mono text-xs font-bold text-emerald-300">
           <TrendingUp className="h-3 w-3" /> BUY
         </span>
       );
     }
     if (bot.bias === 'SELL') {
       return (
-        <span className="inline-flex items-center gap-1 rounded bg-rose-500/20 px-1.5 py-0.5 font-mono text-2xs font-bold text-rose-300">
+        <span className="inline-flex items-center gap-1 rounded bg-rose-500/20 px-1.5 py-0.5 font-mono text-xs font-bold text-rose-300">
           <TrendingDown className="h-3 w-3" /> SELL
         </span>
       );
     }
     return (
-      <span className="inline-flex items-center gap-1 rounded bg-slate-700/50 px-1.5 py-0.5 font-mono text-2xs font-medium text-slate-300">
+      <span className="inline-flex items-center gap-1 rounded bg-slate-700/50 px-1.5 py-0.5 font-mono text-xs font-medium text-slate-300">
         <Minus className="h-3 w-3" /> NEUTRAL
       </span>
     );
@@ -212,12 +212,12 @@ const BotCardComponent: React.FC<BotCardProps> = ({
         {/* 1. Golden Ratio Master Badge cu iconiță φ (Phi) */}
         {isGoldenBot && (
           <div className="mb-2.5 flex items-center justify-between rounded-xl border border-yellow-400/60 bg-gradient-to-r from-amber-500/30 via-yellow-500/25 to-amber-600/30 px-2.5 py-1 text-yellow-300 shadow-sm">
-            <div className="flex items-center gap-1.5 font-mono text-2xs font-extrabold tracking-normal sm:tracking-wider uppercase">
+            <div className="flex items-center gap-1.5 font-mono text-xs font-extrabold tracking-normal sm:tracking-wider uppercase">
               <span className="font-serif text-base font-extrabold text-yellow-300">φ</span>
               <Sparkles className="h-3.5 w-3.5 text-yellow-400 animate-spin" />
               <span>GOLDEN RATIO MASTER</span>
             </div>
-            <span className="font-mono text-2xs font-bold text-yellow-400/95 bg-yellow-500/20 px-1.5 py-0.5 rounded border border-yellow-400/40">
+            <span className="font-mono text-xs font-bold text-yellow-400/95 bg-yellow-500/20 px-1.5 py-0.5 rounded border border-yellow-400/40">
               φ = 1.618
             </span>
           </div>
@@ -235,7 +235,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
                 >
                   {bot.name}
                 </h4>
-                <span className="rounded bg-slate-800/90 px-1.5 py-0.5 font-mono text-2xs font-bold text-slate-300">
+                <span className="rounded bg-slate-800/90 px-1.5 py-0.5 font-mono text-xs font-bold text-slate-300">
                   {bot.asset}
                 </span>
               </div>
@@ -245,7 +245,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
                 href={`https://${bot.domain}`}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-0.5 inline-flex items-center gap-1 text-2xs text-slate-400 hover:text-cyan-500 transition-colors"
+                className="mt-0.5 inline-flex items-center gap-1 text-xs text-slate-400 hover:text-cyan-500 transition-colors"
               >
                 <span>{bot.domain}</span>
                 <ExternalLink className="h-2.5 w-2.5" />
@@ -271,18 +271,18 @@ const BotCardComponent: React.FC<BotCardProps> = ({
               : 'border-slate-800 bg-slate-950/70'
           }`}>
             <div className="flex items-center justify-between border-b border-slate-800/80 pb-1.5">
-              <div className="flex items-center gap-1 text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-yellow-400">
+              <div className="flex items-center gap-1 text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-yellow-400">
                 <Compass className="h-3 w-3 text-yellow-400" />
                 <span>Fibonacci Analysis</span>
               </div>
-              <span className="text-2xs font-bold text-emerald-500 flex items-center gap-0.5">
+              <span className="text-xs font-bold text-emerald-500 flex items-center gap-0.5">
                 <Target className="h-2.5 w-2.5" />
                 {fibData.distance}
               </span>
             </div>
 
             {/* Specificații exacte conform cerințelor 3, 4, 5, 6 */}
-            <div className="mt-1.5 flex flex-col gap-1 text-2xs">
+            <div className="mt-1.5 flex flex-col gap-1 text-xs">
               <div className="flex items-center justify-between text-slate-300">
                 <span className="text-slate-400">Nivel Curent:</span>
                 <span className="font-bold text-yellow-300">{fibData.currentLevel}</span>
@@ -293,7 +293,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
                   {fibData.strategyLabel}
                 </span>
               </div>
-              <div className="flex items-center justify-between text-2xs text-cyan-300/90">
+              <div className="flex items-center justify-between text-xs text-cyan-300/90">
                 <span className="text-slate-500 font-sans">Condiție:</span>
                 <span className="font-mono text-cyan-300">{fibData.confirmationDetail}</span>
               </div>
@@ -301,7 +301,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
 
             {/* Mini Grafic cu ultimele 5 Swing Points (SW1 - SW5) */}
             <div className="mt-2 pt-1 border-t border-slate-800/60">
-              <div className="flex items-center justify-between text-2xs text-slate-500 font-sans mb-1">
+              <div className="flex items-center justify-between text-xs text-slate-500 font-sans mb-1">
                 <span>Swing Flow (SW1 → SW5)</span>
                 <span className="text-yellow-400/90 font-mono">0.618 Golden Pocket</span>
               </div>
@@ -352,7 +352,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
                 </svg>
 
                 {/* Marcaje Swing Points */}
-                <div className="absolute bottom-0.5 inset-x-2 flex justify-between text-2xs font-mono text-slate-500">
+                <div className="absolute bottom-0.5 inset-x-2 flex justify-between text-xs font-mono text-slate-500">
                   <span>SW1</span>
                   <span>SW2</span>
                   <span>SW3</span>
@@ -367,7 +367,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
           <div className="mt-3 grid grid-cols-3 gap-2 rounded-xl border border-slate-800/80 bg-slate-950/60 p-2 text-center">
             {/* ADX */}
             <div className="flex flex-col">
-              <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center justify-center gap-1">
+              <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center justify-center gap-1">
                 <Activity className="h-2.5 w-2.5 text-cyan-500" /> ADX
               </span>
               <span
@@ -381,7 +381,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
 
             {/* Whale Intensity */}
             <div className="flex flex-col">
-              <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center justify-center gap-1">
+              <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center justify-center gap-1">
                 <Waves className="h-2.5 w-2.5 text-purple-400" /> WHALE
               </span>
               <span
@@ -399,7 +399,7 @@ const BotCardComponent: React.FC<BotCardProps> = ({
 
             {/* Lot Size */}
             <div className="flex flex-col">
-              <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center justify-center gap-1">
+              <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center justify-center gap-1">
                 <Zap className="h-2.5 w-2.5 text-amber-500" /> LOT
               </span>
               <span className="font-mono text-xs font-bold text-slate-200">{bot.lotSize}</span>
@@ -409,13 +409,13 @@ const BotCardComponent: React.FC<BotCardProps> = ({
           {/* H4 Bias & Live P/L bar */}
           <div className="mt-3 flex items-center justify-between border-t border-slate-800/60 pt-2.5">
             <div className="flex items-center gap-1.5">
-              <span className="text-2xs font-medium text-slate-400">H4 Bias:</span>
+              <span className="text-xs font-medium text-slate-400">H4 Bias:</span>
               {getBiasBadge()}
             </div>
 
             {/* Live P/L */}
             <div className="text-right">
-              <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 block">Live P/L</span>
+              <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 block">Live P/L</span>
               <span
                 className={`font-mono text-sm font-extrabold tracking-tight ${
                   isProfit ? 'text-emerald-500' : isLoss ? 'text-rose-500' : 'text-slate-400'

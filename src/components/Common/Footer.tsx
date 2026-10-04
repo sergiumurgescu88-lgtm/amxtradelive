@@ -73,7 +73,7 @@ export const Footer: React.FC<FooterProps> = ({ domains }) => {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col items-center justify-between border-t border-slate-900 pt-4 text-[11px] text-slate-600 sm:flex-row">
+        <div className="mt-6 flex flex-col items-center justify-between border-t border-slate-900 pt-4 text-xs text-slate-600 sm:flex-row">
           <div className="flex items-center gap-1.5">
             <ShieldCheck className="h-3.5 w-3.5 text-emerald-500/70" />
             <span>Strictly Algorithmic Execution • Slippage Limit 1.2 Pips • Golden Ratio Mathematical Safeguards</span>

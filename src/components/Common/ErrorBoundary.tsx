@@ -47,7 +47,7 @@ export class ErrorBoundary extends Component<Props, State> {
             <span>REPORNEȘTE MODULUL</span>
           </button>
           {this.state.error && (
-            <pre className="mt-4 p-3 rounded-lg bg-black/40 text-rose-400/80 text-[10px] font-mono overflow-auto max-w-lg w-full text-left border border-rose-500/10">
+            <pre className="mt-4 p-3 rounded-lg bg-black/40 text-rose-400/80 text-xs font-mono overflow-auto max-w-lg w-full text-left border border-rose-500/10">
               {this.state.error.message}
             </pre>
           )}

@@ -11,6 +11,15 @@ interface WebSocketHookProps {
   onKillSound?: () => void;
 }
 
+export function getAccountFromDomain(): string {
+  if (typeof window === 'undefined') return 'amteam';
+  const hostname = window.location.hostname;
+  if (hostname.includes('amx.today')) return 'amx';
+  if (hostname.includes('aditrade.online')) return 'aditrade';
+  if (hostname.includes('g4trade.online')) return 'g4trade';
+  return 'amteam'; // default fallback
+}
+
 /**
  * 1. Detectează automat domeniul curent din hostname sau query params
  * (amteam.live, amx.today, aditrade.online, g4trade.online)
@@ -251,9 +260,24 @@ export function useWebSocket({ onNewToast, onTradeSound, onAlertSound, onKillSou
   useEffect(() => {
     let isComponentMounted = true;
 
-    // 1. Construire URL WebSocket pentru serverul curent
+    // 1. Construire URL WebSocket cu detecție inteligentă de mediu (Sandbox AI Studio vs Local Dev)
     const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}`;
+    const isLocalhost = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    const currentPort = window.location.port;
+
+    let host = window.location.host;
+    if (isLocalhost) {
+      if (currentPort === '3000' || !currentPort) {
+        host = 'localhost:3000'; // Sandbox AI Studio
+      } else {
+        host = 'localhost:8000'; // Dev local cu Python separat (FastAPI)
+      }
+    }
+
+    const account = getAccountFromDomain();
+    const wsUrl = `${protocol}//${host}/ws/feed?account=${account || 'amteam'}`;
+
+    console.log('🔌 Connecting to WebSocket:', wsUrl);
 
     function connectWebSocket() {
       if (!isComponentMounted) return;

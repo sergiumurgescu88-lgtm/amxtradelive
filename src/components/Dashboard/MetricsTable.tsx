@@ -117,7 +117,7 @@ const MetricsTableComponent: React.FC<MetricsTableProps> = ({
   // Render indicator de sortare
   const renderSortIndicator = (field: SortField) => {
     if (sortField !== field) {
-      return <span className="opacity-20 text-[10px]">⇅</span>;
+      return <span className="opacity-20 text-xs">⇅</span>;
     }
     return sortAsc ? (
       <ChevronUp className="h-3.5 w-3.5 text-cyan-500" />
@@ -187,28 +187,28 @@ const MetricsTableComponent: React.FC<MetricsTableProps> = ({
     switch (status) {
       case 'ÎN TRADE':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2 py-0.5 font-mono text-2xs font-semibold text-emerald-300">
+          <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2 py-0.5 font-mono text-xs font-semibold text-emerald-300">
             <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-ping" />
             ÎN TRADE
           </span>
         );
       case 'SCANNING':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full border border-cyan-500/40 bg-cyan-500/15 px-2 py-0.5 font-mono text-2xs font-semibold text-cyan-300">
+          <span className="inline-flex items-center gap-1 rounded-full border border-cyan-500/40 bg-cyan-500/15 px-2 py-0.5 font-mono text-xs font-semibold text-cyan-300">
             <span className="h-1.5 w-1.5 rounded-full bg-cyan-500" />
             SCANNING
           </span>
         );
       case 'COOLDOWN':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/15 px-2 py-0.5 font-mono text-2xs font-semibold text-amber-300">
+          <span className="inline-flex items-center gap-1 rounded-full border border-amber-500/40 bg-amber-500/15 px-2 py-0.5 font-mono text-xs font-semibold text-amber-300">
             <span className="h-1.5 w-1.5 rounded-full bg-amber-500" />
             COOLDOWN
           </span>
         );
       case 'PAUSED':
         return (
-          <span className="inline-flex items-center gap-1 rounded-full border border-rose-500/40 bg-rose-500/15 px-2 py-0.5 font-mono text-2xs font-semibold text-rose-300">
+          <span className="inline-flex items-center gap-1 rounded-full border border-rose-500/40 bg-rose-500/15 px-2 py-0.5 font-mono text-xs font-semibold text-rose-300">
             <span className="h-1.5 w-1.5 rounded-full bg-rose-500" />
             PAUSED
           </span>
@@ -304,7 +304,7 @@ const MetricsTableComponent: React.FC<MetricsTableProps> = ({
       <div className="mt-4 overflow-x-auto">
         <table className="w-full text-left text-xs">
           <thead>
-            <tr className="border-b border-slate-800 bg-slate-950/60 text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 select-none">
+            <tr className="border-b border-slate-800 bg-slate-950/60 text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 select-none">
               {/* Bot Name */}
               <th
                 onClick={() => handleSort('name')}
@@ -497,7 +497,7 @@ const MetricsTableComponent: React.FC<MetricsTableProps> = ({
                           {bot.name}
                         </span>
                         {bot.isGoldenRatioMaster && (
-                          <span className="text-2xs font-mono text-yellow-400/80">
+                          <span className="text-xs font-mono text-yellow-400/80">
                             GOLDEN RATIO MASTER
                           </span>
                         )}
@@ -522,7 +522,7 @@ const MetricsTableComponent: React.FC<MetricsTableProps> = ({
 
                   {/* Symbol */}
                   <td className="py-3 px-3">
-                    <span className="rounded bg-slate-800 px-2 py-0.5 text-2xs font-bold text-slate-200">
+                    <span className="rounded bg-slate-800 px-2 py-0.5 text-xs font-bold text-slate-200">
                       {bot.asset}
                     </span>
                   </td>
@@ -592,7 +592,7 @@ const MetricsTableComponent: React.FC<MetricsTableProps> = ({
                   </td>
 
                   {/* Last Trade (timestamp) */}
-                  <td className="py-3 px-3 text-slate-400 text-[11px]">
+                  <td className="py-3 px-3 text-slate-400 text-xs">
                     {lastTradeTime}
                   </td>
 
@@ -603,7 +603,7 @@ const MetricsTableComponent: React.FC<MetricsTableProps> = ({
                         e.stopPropagation();
                         onToggleStatus(bot.id);
                       }}
-                      className={`rounded-lg border px-2 py-1 text-[11px] font-bold transition-all ${
+                      className={`rounded-lg border px-2 py-1 text-xs font-bold transition-all ${
                         bot.status === 'PAUSED'
                           ? 'border-emerald-500/40 bg-emerald-500/10 text-emerald-300 hover:bg-emerald-500/20'
                           : 'border-amber-500/40 bg-amber-500/10 text-amber-300 hover:bg-amber-500/20'

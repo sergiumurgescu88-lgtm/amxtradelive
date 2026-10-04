@@ -170,7 +170,7 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
             <div className="hidden sm:flex items-center gap-1.5 rounded-xl border border-slate-800 bg-slate-950/80 p-1 text-xs font-mono">
               <button
                 onClick={() => setShowSp500(!showSp500)}
-                className={`flex items-center gap-1 rounded-lg px-2 py-0.5 text-[11px] font-bold transition-all ${
+                className={`flex items-center gap-1 rounded-lg px-2 py-0.5 text-xs font-bold transition-all ${
                   showSp500
                     ? 'border border-slate-500 bg-slate-800 text-slate-200'
                     : 'text-slate-500 hover:text-slate-300'
@@ -183,7 +183,7 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
 
               <button
                 onClick={() => setShowGold(!showGold)}
-                className={`flex items-center gap-1 rounded-lg px-2 py-0.5 text-[11px] font-bold transition-all ${
+                className={`flex items-center gap-1 rounded-lg px-2 py-0.5 text-xs font-bold transition-all ${
                   showGold
                     ? 'border border-yellow-500/40 bg-yellow-500/15 text-yellow-300'
                     : 'text-slate-500 hover:text-slate-300'
@@ -238,7 +238,7 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
             <XAxis
               dataKey="timestamp"
               stroke="#64748b"
-              fontSize={10}
+              fontSize={12}
               tickLine={false}
               axisLine={{ stroke: '#334155' }}
               tickFormatter={(t) => {
@@ -253,7 +253,7 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
 
             <YAxis
               stroke="#64748b"
-              fontSize={10}
+              fontSize={12}
               tickLine={false}
               axisLine={{ stroke: '#334155' }}
               tickFormatter={viewMode === 'EQUITY' ? formatCurrency : (v) => `${v}%`}
@@ -273,7 +273,7 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
                           <Calendar className="h-3.5 w-3.5 text-cyan-500" />
                           {point.timestamp}
                         </span>
-                        <span className="text-[10px] text-slate-500 font-mono">Trinity Node</span>
+                        <span className="text-xs text-slate-500 font-mono">Trinity Node</span>
                       </div>
 
                       {/* Equity și Drawdown simultan */}
@@ -291,7 +291,7 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
                           </span>
                         </div>
                         {point.dailyGain !== undefined && (
-                          <div className="flex items-center justify-between text-[11px]">
+                          <div className="flex items-center justify-between text-xs">
                             <span className="text-slate-400">P/L Perioadă:</span>
                             <span className={`font-bold ${point.dailyGain >= 0 ? 'text-emerald-500' : 'text-rose-500'}`}>
                               {point.dailyGain >= 0 ? '+' : ''}${point.dailyGain.toLocaleString()}
@@ -301,7 +301,7 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
                       </div>
 
                       {/* Cel mai bun / Cel mai rău trade din acea perioadă */}
-                      <div className="mt-2.5 border-t border-slate-800/80 pt-2 space-y-1 text-[11px]">
+                      <div className="mt-2.5 border-t border-slate-800/80 pt-2 space-y-1 text-xs">
                         {point.bestTrade && (
                           <div className="flex items-center justify-between text-emerald-300">
                             <span className="text-slate-500 font-sans">Best Trade:</span>
@@ -322,7 +322,7 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
 
                       {/* Valori Benchmark în tooltip */}
                       {viewMode === 'EQUITY' && (showSp500 || showGold) && (
-                        <div className="mt-2 border-t border-slate-800/80 pt-1.5 flex justify-between text-[10px] text-slate-400">
+                        <div className="mt-2 border-t border-slate-800/80 pt-1.5 flex justify-between text-xs text-slate-400">
                           {showSp500 && point.sp500 && <span>S&P: ${formatCurrency(point.sp500)}</span>}
                           {showGold && point.gold && <span className="text-yellow-400">Gold: ${formatCurrency(point.gold)}</span>}
                         </div>
@@ -392,57 +392,57 @@ const PerformanceChartComponent: React.FC<PerformanceChartProps> = ({ equityHist
       <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-5 border-t border-slate-800/80 pt-4 font-mono">
         {/* Total Return % */}
         <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-          <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+          <span className="text-xs font-bold uppercase tracking-wider text-slate-400 flex items-center gap-1 font-sans">
             <Percent className="h-3 w-3 text-cyan-500" /> Total Return
           </span>
           <p className={`text-base font-extrabold mt-1 ${stats.totalReturnPct >= 0 ? 'text-cyan-300' : 'text-rose-500'}`}>
             {stats.totalReturnPct >= 0 ? '+' : ''}{stats.totalReturnPct}%
           </p>
-          <span className="text-[10px] text-slate-500 font-sans">Pe intervalul {timeframe}</span>
+          <span className="text-xs text-slate-500 font-sans">Pe intervalul {timeframe}</span>
         </div>
 
         {/* Sharpe Ratio */}
         <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-          <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+          <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center gap-1 font-sans">
             <Activity className="h-3 w-3 text-emerald-500" /> Sharpe Ratio
           </span>
           <p className="text-base font-extrabold text-emerald-500 mt-1">
             {stats.sharpeRatio}
           </p>
-          <span className="text-2xs text-slate-500 font-sans">Eficiență risc optim</span>
+          <span className="text-xs text-slate-500 font-sans">Eficiență risc optim</span>
         </div>
 
         {/* Max Drawdown % */}
         <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-          <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+          <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center gap-1 font-sans">
             <ShieldAlert className="h-3 w-3 text-rose-500" /> Max Drawdown
           </span>
           <p className="text-base font-extrabold text-rose-500 mt-1">
             -{stats.maxDrawdownPct}%
           </p>
-          <span className="text-2xs text-slate-500 font-sans">Protecție stop-loss</span>
+          <span className="text-xs text-slate-500 font-sans">Protecție stop-loss</span>
         </div>
 
         {/* Win Rate % */}
         <div className="rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-          <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+          <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center gap-1 font-sans">
             <Award className="h-3 w-3 text-yellow-400" /> Fleet Win Rate
           </span>
           <p className="text-base font-extrabold text-yellow-300 mt-1">
             {stats.winRatePct}%
           </p>
-          <span className="text-2xs text-slate-500 font-sans">Flotă 20 Boți</span>
+          <span className="text-xs text-slate-500 font-sans">Flotă 20 Boți</span>
         </div>
 
         {/* Profit Factor */}
         <div className="col-span-2 sm:col-span-1 rounded-xl border border-slate-800 bg-slate-950/70 p-3">
-          <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center gap-1 font-sans">
+          <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 flex items-center gap-1 font-sans">
             <TrendingUp className="h-3 w-3 text-cyan-500" /> Profit Factor
           </span>
           <p className="text-base font-extrabold text-slate-100 mt-1">
             {stats.profitFactor} PF
           </p>
-          <span className="text-2xs text-slate-500 font-sans">Gross Win / Gross Loss</span>
+          <span className="text-xs text-slate-500 font-sans">Gross Win / Gross Loss</span>
         </div>
       </div>
     </div>

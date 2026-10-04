@@ -1,29 +1,31 @@
-import React, { useState, useCallback, useMemo, useRef } from 'react';
+import React, { useState, useCallback, useMemo, useRef, lazy, Suspense } from 'react';
 import { useDarkMode } from './hooks/useDarkMode';
 import { useSoundAlert } from './hooks/useSoundAlert';
 import { useWebSocket } from './hooks/useWebSocket';
 import { BotData, DomainId, ToastNotification, DomainSummary } from './types/trading';
 
-// Components
+// Critical Components (Direct Load)
 import { Header } from './components/Common/Header';
 import { Footer } from './components/Common/Footer';
 import { ToastContainer } from './components/Common/ToastContainer';
 import { ErrorBoundary } from './components/Common/ErrorBoundary';
-import { BotCardSkeleton, KPISkeleton } from './components/Common/Skeleton';
+import { BotCardSkeleton, KPISkeleton, Skeleton } from './components/Common/Skeleton';
 import { CommandCenter } from './components/Dashboard/CommandCenter';
 import { BotCard } from './components/Dashboard/BotCard';
-import { DomainGroup } from './components/Dashboard/DomainGroup';
-import { PerformanceChart } from './components/Dashboard/PerformanceChart';
-import { MetricsTable } from './components/Dashboard/MetricsTable';
-import { DeepResearchInsights } from './components/Dashboard/DeepResearchInsights';
-import { ExecutionLogs } from './components/Dashboard/ExecutionLogs';
-import { FleetAdvisor } from './components/Dashboard/FleetAdvisor';
 
-// Modals
-import { BotAnalysisModal } from './components/Modals/BotAnalysisModal';
-import { QuickTradeModal } from './components/Modals/QuickTradeModal';
-import { BotSettingsModal } from './components/Modals/BotSettingsModal';
-import { EmergencyKillModal } from './components/Modals/EmergencyKillModal';
+// Lazy Loaded Components
+const DomainGroup = lazy(() => import('./components/Dashboard/DomainGroup').then(m => ({ default: m.DomainGroup })));
+const PerformanceChart = lazy(() => import('./components/Dashboard/PerformanceChart').then(m => ({ default: m.PerformanceChart })));
+const MetricsTable = lazy(() => import('./components/Dashboard/MetricsTable').then(m => ({ default: m.MetricsTable })));
+const DeepResearchInsights = lazy(() => import('./components/Dashboard/DeepResearchInsights').then(m => ({ default: m.DeepResearchInsights })));
+const ExecutionLogs = lazy(() => import('./components/Dashboard/ExecutionLogs').then(m => ({ default: m.ExecutionLogs })));
+const FleetAdvisor = lazy(() => import('./components/Dashboard/FleetAdvisor').then(m => ({ default: m.FleetAdvisor })));
+
+// Lazy Loaded Modals
+const BotAnalysisModal = lazy(() => import('./components/Modals/BotAnalysisModal').then(m => ({ default: m.BotAnalysisModal })));
+const QuickTradeModal = lazy(() => import('./components/Modals/QuickTradeModal').then(m => ({ default: m.QuickTradeModal })));
+const BotSettingsModal = lazy(() => import('./components/Modals/BotSettingsModal').then(m => ({ default: m.BotSettingsModal })));
+const EmergencyKillModal = lazy(() => import('./components/Modals/EmergencyKillModal').then(m => ({ default: m.EmergencyKillModal })));
 
 import {
   Layers,
@@ -281,12 +283,14 @@ export default function App() {
           
           {/* SRE-STRATEGIST FLEET ADVISOR */}
           <ErrorBoundary>
-            <FleetAdvisor 
-              bots={bots} 
-              account={account} 
-              sentiment={sentiment} 
-              domains={domains} 
-            />
+            <Suspense fallback={<Skeleton className="h-48 w-full" />}>
+              <FleetAdvisor 
+                bots={bots} 
+                account={account} 
+                sentiment={sentiment} 
+                domains={domains} 
+              />
+            </Suspense>
           </ErrorBoundary>
         </section>
 
@@ -367,22 +371,24 @@ export default function App() {
                 {[...Array(8)].map((_, i) => <BotCardSkeleton key={i} />)}
               </div>
             ) : viewLayout === 'GROUPED' && domainFilter === 'ALL' ? (
-              <div className="space-y-6">
-                {domains.map((dom) => {
-                  const domainBots = bots.filter((b) => b.domain === dom.id);
-                  return (
-                    <DomainGroup
-                      key={dom.id}
-                      domain={dom}
-                      bots={domainBots}
-                      onAnalyze={handleAnalyzeBot}
-                      onToggleStatus={toggleBotStatus}
-                      onOpenSettings={handleOpenSettings}
-                      onToggleDomainAll={handleToggleDomainAll}
-                    />
-                  );
-                })}
-              </div>
+              <Suspense fallback={<div className="space-y-6">{[...Array(4)].map((_, i) => <Skeleton key={i} className="h-40 w-full" />)}</div>}>
+                <div className="space-y-6">
+                  {domains.map((dom) => {
+                    const domainBots = bots.filter((b) => b.domain === dom.id);
+                    return (
+                      <DomainGroup
+                        key={dom.id}
+                        domain={dom}
+                        bots={domainBots}
+                        onAnalyze={handleAnalyzeBot}
+                        onToggleStatus={toggleBotStatus}
+                        onOpenSettings={handleOpenSettings}
+                        onToggleDomainAll={handleToggleDomainAll}
+                      />
+                    );
+                  })}
+                </div>
+              </Suspense>
             ) : (
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {visibleBots.map((bot) => (
@@ -401,32 +407,45 @@ export default function App() {
 
         {/* SECTION C: PERFORMANCE OVERVIEW (Area Chart & 20-Bot Ledger) */}
         <section id="performance" className="scroll-mt-24 space-y-6">
-          <ErrorBoundary>
-            {/* 3. Lazy loading Recharts: render only when tab is active */}
-            {(activeTab === 'COMMAND' || activeTab === 'PERFORMANCE') && (
-              <PerformanceChart equityHistory={equityHistory} />
-            )}
-            <MetricsTable
-              bots={bots}
-              onAnalyze={handleAnalyzeBot}
-              onToggleStatus={toggleBotStatus}
-            />
+          <ErrorBoundary fallback={
+            <div className="flex h-72 items-center justify-center rounded-2xl border border-slate-800 bg-slate-900/50 text-slate-500 font-mono text-sm">
+              <div className="flex flex-col items-center gap-2">
+                <BarChart3 className="h-8 w-8 opacity-20" />
+                <span>GRAFIC INDISPONIBIL (MODUL IZOLAT)</span>
+              </div>
+            </div>
+          }>
+            <Suspense fallback={<Skeleton className="h-[400px] w-full" />}>
+              {/* 3. Lazy loading Recharts: render only when tab is active */}
+              {(activeTab === 'COMMAND' || activeTab === 'PERFORMANCE') && (
+                <PerformanceChart equityHistory={equityHistory} />
+              )}
+              <MetricsTable
+                bots={bots}
+                onAnalyze={handleAnalyzeBot}
+                onToggleStatus={toggleBotStatus}
+              />
+            </Suspense>
           </ErrorBoundary>
         </section>
 
         {/* SECTION D: DEEP RESEARCH INSIGHTS */}
         <section id="research" className="scroll-mt-24">
-          <DeepResearchInsights domains={domains} />
+          <Suspense fallback={<Skeleton className="h-64 w-full" />}>
+            <DeepResearchInsights domains={domains} />
+          </Suspense>
         </section>
 
         {/* SECTION E: LIVE EXECUTION LOGS (Terminal Viewer cu 2. autoScroll control) */}
         <section id="logs" className="scroll-mt-24">
-          <ExecutionLogs
-            logs={logs}
-            onClearLogs={clearLogs}
-            autoScroll={autoScroll}
-            onAutoScrollChange={setAutoScroll}
-          />
+          <Suspense fallback={<Skeleton className="h-80 w-full" />}>
+            <ExecutionLogs
+              logs={logs}
+              onClearLogs={clearLogs}
+              autoScroll={autoScroll}
+              onAutoScrollChange={setAutoScroll}
+            />
+          </Suspense>
         </section>
       </main>
 
@@ -434,38 +453,40 @@ export default function App() {
       <Footer domains={domains} />
 
       {/* 3. Lazy loading Modale: mount only when opened */}
-      {analyzingBot && (
-        <BotAnalysisModal
-          bot={analyzingBot}
-          onClose={handleCloseAnalyze}
-          onToggleStatus={toggleBotStatus}
-        />
-      )}
+      <Suspense fallback={null}>
+        {analyzingBot && (
+          <BotAnalysisModal
+            bot={analyzingBot}
+            onClose={handleCloseAnalyze}
+            onToggleStatus={toggleBotStatus}
+          />
+        )}
 
-      {isQuickTradeOpen && (
-        <QuickTradeModal
-          isOpen={isQuickTradeOpen}
-          onClose={handleCloseQuickTrade}
-          onExecuteTrade={sendManualTrade}
-        />
-      )}
+        {isQuickTradeOpen && (
+          <QuickTradeModal
+            isOpen={isQuickTradeOpen}
+            onClose={handleCloseQuickTrade}
+            onExecuteTrade={sendManualTrade}
+          />
+        )}
 
-      {settingsBot && (
-        <BotSettingsModal
-          bot={settingsBot}
-          isOpen={!!settingsBot}
-          onClose={handleCloseSettings}
-          onSaveSettings={updateBotSettings}
-        />
-      )}
+        {settingsBot && (
+          <BotSettingsModal
+            bot={settingsBot}
+            isOpen={!!settingsBot}
+            onClose={handleCloseSettings}
+            onSaveSettings={updateBotSettings}
+          />
+        )}
 
-      {isEmergencyKillOpen && (
-        <EmergencyKillModal
-          isOpen={isEmergencyKillOpen}
-          onClose={handleCloseEmergencyKill}
-          onConfirmKill={triggerEmergencyKill}
-        />
-      )}
+        {isEmergencyKillOpen && (
+          <EmergencyKillModal
+            isOpen={isEmergencyKillOpen}
+            onClose={handleCloseEmergencyKill}
+            onConfirmKill={triggerEmergencyKill}
+          />
+        )}
+      </Suspense>
     </div>
   );
 }

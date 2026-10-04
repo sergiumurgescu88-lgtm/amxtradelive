@@ -92,7 +92,7 @@ export const BotSettingsModal: React.FC<BotSettingsModalProps> = ({
                 onChange={(e) => setMaxDrawdownPct(parseFloat(e.target.value))}
                 className="w-full min-h-[48px] rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 font-mono text-base font-bold text-slate-100 focus:border-cyan-500 focus:outline-none"
               />
-              <span className="text-[11px] text-slate-400 mt-1 block">
+              <span className="text-xs text-slate-400 mt-1 block">
                 Dacă drawdown-ul depășește acest procent, botul se va opri automat.
               </span>
             </div>
@@ -111,7 +111,7 @@ export const BotSettingsModal: React.FC<BotSettingsModalProps> = ({
                 onChange={(e) => setLossThresholdUsd(parseFloat(e.target.value))}
                 className="w-full min-h-[48px] rounded-xl border border-slate-700 bg-slate-950 px-3.5 py-2 font-mono text-base font-bold text-slate-100 focus:border-cyan-500 focus:outline-none"
               />
-              <span className="text-[11px] text-slate-400 mt-1 block">
+              <span className="text-xs text-slate-400 mt-1 block">
                 Pierdere maximă admisă în 24 de ore înainte de auto-decuplare.
               </span>
             </div>
@@ -136,7 +136,7 @@ export const BotSettingsModal: React.FC<BotSettingsModalProps> = ({
             <div className="flex min-h-[48px] items-center justify-between rounded-xl border border-slate-800 bg-slate-950/60 p-3.5">
               <div>
                 <span className="text-xs font-bold text-slate-200 block">Auto-Pauză pe Anomaly Alert</span>
-                <span className="text-[11px] text-slate-400">Oprește execuția când VIX &gt; 35</span>
+                <span className="text-xs text-slate-400">Oprește execuția când VIX &gt; 35</span>
               </div>
               <button
                 type="button"

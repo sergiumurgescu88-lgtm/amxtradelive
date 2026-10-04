@@ -92,7 +92,7 @@ export const DomainGroup: React.FC<DomainGroupProps> = ({
             <CheckCircle2 className="h-4 w-4 text-cyan-300 shrink-0" />
             <span>Sunteți conectat pe nodul de cluster: {domain.name} (Focalizare activată)</span>
           </div>
-          <span className="text-2xs font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/30">
+          <span className="text-xs font-mono text-cyan-300 bg-cyan-950/80 px-2 py-0.5 rounded border border-cyan-500/30">
             LOCAL INSTANCE
           </span>
         </div>
@@ -109,11 +109,11 @@ export const DomainGroup: React.FC<DomainGroupProps> = ({
               <h3 className="font-mono text-base font-extrabold text-slate-100 sm:text-lg">
                 {domain.name}
               </h3>
-              <span className="rounded-full border border-slate-700 bg-slate-800/70 px-2.5 py-0.5 text-2xs font-semibold text-cyan-300">
+              <span className="rounded-full border border-slate-700 bg-slate-800/70 px-2.5 py-0.5 text-xs font-semibold text-cyan-300">
                 {domain.niche}
               </span>
               {isCurrentDomain && (
-                <span className="rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2 py-0.5 font-mono text-2xs font-bold text-emerald-300">
+                <span className="rounded-full border border-emerald-500/40 bg-emerald-500/15 px-2 py-0.5 font-mono text-xs font-bold text-emerald-300">
                   DOMENIU ACTIV
                 </span>
               )}

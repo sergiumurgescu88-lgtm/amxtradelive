@@ -31,21 +31,21 @@ const renderLevelBadge = (level: LogLevel) => {
   switch (level) {
     case 'TRADE':
       return (
-        <span className="inline-flex items-center gap-1 rounded border border-emerald-500/50 bg-emerald-500/15 px-1.5 py-0.5 text-2xs font-semibold text-emerald-500">
+        <span className="inline-flex items-center gap-1 rounded border border-emerald-500/50 bg-emerald-500/15 px-1.5 py-0.5 text-xs font-semibold text-emerald-500">
           <Zap className="h-2.5 w-2.5" />
           TRADE
         </span>
       );
     case 'WARN':
       return (
-        <span className="inline-flex items-center gap-1 rounded border border-amber-500/50 bg-amber-500/15 px-1.5 py-0.5 text-2xs font-semibold text-amber-300">
+        <span className="inline-flex items-center gap-1 rounded border border-amber-500/50 bg-amber-500/15 px-1.5 py-0.5 text-xs font-semibold text-amber-300">
           <AlertTriangle className="h-2.5 w-2.5" />
           WARN
         </span>
       );
     case 'ERROR':
       return (
-        <span className="inline-flex items-center gap-1 rounded border border-rose-500/50 bg-rose-500/20 px-1.5 py-0.5 text-2xs font-semibold text-rose-500">
+        <span className="inline-flex items-center gap-1 rounded border border-rose-500/50 bg-rose-500/20 px-1.5 py-0.5 text-xs font-semibold text-rose-500">
           <AlertCircle className="h-2.5 w-2.5" />
           ERROR
         </span>
@@ -53,7 +53,7 @@ const renderLevelBadge = (level: LogLevel) => {
     case 'INFO':
     default:
       return (
-        <span className="inline-flex items-center gap-1 rounded border border-slate-700 bg-slate-800 px-1.5 py-0.5 text-2xs font-semibold text-slate-300">
+        <span className="inline-flex items-center gap-1 rounded border border-slate-700 bg-slate-800 px-1.5 py-0.5 text-xs font-semibold text-slate-300">
           <Info className="h-2.5 w-2.5" />
           INFO
         </span>
@@ -90,7 +90,7 @@ const LogLineComponent: React.FC<LogLineProps> = ({ log, onSelect }) => {
       style={{ minHeight: '28px' }}
     >
       {/* Timestamp */}
-      <span className="text-slate-500 shrink-0 font-medium text-2xs mt-0.5">
+      <span className="text-slate-500 shrink-0 font-medium text-xs mt-0.5">
         [{log.timestamp}]
       </span>
 
@@ -100,7 +100,7 @@ const LogLineComponent: React.FC<LogLineProps> = ({ log, onSelect }) => {
       </div>
 
       {/* Bot ID & Domain */}
-      <span className="rounded bg-slate-900 px-1.5 py-0.5 text-2xs font-semibold text-slate-300 border border-slate-800 shrink-0">
+      <span className="rounded bg-slate-900 px-1.5 py-0.5 text-xs font-semibold text-slate-300 border border-slate-800 shrink-0">
         {log.botName || log.botId}
       </span>
 
@@ -192,10 +192,16 @@ export const ExecutionLogs: React.FC<ExecutionLogsProps> = ({
 
   // 3. Auto-scroll la loguri noi: doar dacă autoScroll === true ȘI containerul e la bottom (!isScrolledUp)
   useEffect(() => {
-    if (autoScroll && !isScrolledUp && terminalEndRef.current) {
-      terminalEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (autoScroll && !isScrolledUp && terminalContainerRef.current) {
+      const container = terminalContainerRef.current;
+      container.scrollTop = container.scrollHeight;
     }
   }, [filteredLogs, autoScroll, isScrolledUp]);
+
+  // 4. Reset scroll position on mount (pagină mereu sus la început)
+  useEffect(() => {
+    window.scrollTo({ top: 0, behavior: 'instant' });
+  }, []);
 
   // 3. Detectare scroll manual utilizator & update scrollTop pentru virtualizare
   const handleScroll = () => {
@@ -276,7 +282,7 @@ export const ExecutionLogs: React.FC<ExecutionLogsProps> = ({
                   LIVE EXECUTION LOGS • FLEET TERMINAL
                 </h3>
               </div>
-              <p className="text-2xs text-slate-400 font-mono">
+              <p className="text-xs text-slate-400 font-mono">
                 Flux de mesaje live ({filteredLogs.length} afișate / {localLogs.length} total • Virtualizat: {visibleLogs.length} noduri active)
               </p>
             </div>
@@ -314,7 +320,7 @@ export const ExecutionLogs: React.FC<ExecutionLogsProps> = ({
         <div className="flex flex-col gap-2.5 pt-2">
           {/* Level Toggle Buttons (ALL, TRADE, INFO, WARN, ERROR) */}
           <div className="flex flex-wrap items-center gap-1.5">
-            <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-500 mr-1 font-mono">
+            <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-500 mr-1 font-mono">
               LEVEL:
             </span>
             {(['ALL', 'TRADE', 'INFO', 'WARN', 'ERROR'] as const).map((lvl) => {
@@ -434,7 +440,7 @@ export const ExecutionLogs: React.FC<ExecutionLogsProps> = ({
       </div>
 
       {/* Terminal Bottom Status Bar */}
-      <div className="mt-2.5 flex items-center justify-between text-2xs font-mono text-slate-500 px-1">
+      <div className="mt-2.5 flex items-center justify-between text-xs font-mono text-slate-500 px-1">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
           <span>WebSocket Stream: Connected (Event Listener Active)</span>
@@ -497,7 +503,7 @@ export const ExecutionLogs: React.FC<ExecutionLogsProps> = ({
                     <ShieldAlert className="h-3.5 w-3.5" />
                     <span>Diagnostic Stack Trace:</span>
                   </div>
-                  <pre className="text-2xs text-rose-300 leading-tight overflow-x-auto">
+                  <pre className="text-xs text-rose-300 leading-tight overflow-x-auto">
                     {`Error: ${selectedLog.message}\n  at TrinityEngine.executeOrder (execution_core.ts:214:15)\n  at RiskGuardian.validateLimits (risk_module.ts:98:12)\n  at WebSocketDispatcher.handleEvent (ws_feed.ts:167:9)`}
                   </pre>
                 </div>

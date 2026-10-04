@@ -134,14 +134,14 @@ const CommandCenterComponent: React.FC<CommandCenterProps> = ({
                       <h3 className="font-mono text-sm sm:text-base font-bold text-slate-100 group-hover:text-white truncate max-w-[100px] sm:max-w-none">
                         {dom.name}
                       </h3>
-                      <span className={`text-2xs sm:text-xs font-semibold uppercase tracking-normal sm:tracking-wider block ${theme.accent}`}>
+                      <span className={`text-xs sm:text-xs font-semibold uppercase tracking-normal sm:tracking-wider block ${theme.accent}`}>
                         {dom.niche}
                       </span>
                     </div>
                   </div>
 
                   {/* Active bots badge */}
-                  <span className="shrink-0 rounded-full border border-slate-700 bg-slate-800/80 px-2 py-0.5 font-mono text-2xs font-bold text-slate-200">
+                  <span className="shrink-0 rounded-full border border-slate-700 bg-slate-800/80 px-2 py-0.5 font-mono text-xs font-bold text-slate-200">
                     {dom.activeBotsCount}/5
                   </span>
                 </div>
@@ -151,13 +151,13 @@ const CommandCenterComponent: React.FC<CommandCenterProps> = ({
                   {dom.assets.slice(0, 3).map((asset) => (
                     <span
                       key={asset}
-                      className="rounded-md border border-slate-800 bg-slate-950/70 px-1.5 py-0.5 font-mono text-2xs font-semibold text-slate-300"
+                      className="rounded-md border border-slate-800 bg-slate-950/70 px-1.5 py-0.5 font-mono text-xs font-semibold text-slate-300"
                     >
                       {asset}
                     </span>
                   ))}
                   {dom.assets.length > 3 && (
-                    <span className="rounded-md border border-slate-800 bg-slate-950/70 px-1 py-0.5 font-mono text-2xs text-slate-400">
+                    <span className="rounded-md border border-slate-800 bg-slate-950/70 px-1 py-0.5 font-mono text-xs text-slate-400">
                       +{dom.assets.length - 3}
                     </span>
                   )}
@@ -166,7 +166,7 @@ const CommandCenterComponent: React.FC<CommandCenterProps> = ({
                 {/* Profit Total & Daily Pct (Font size: min 14px pe mobile: text-sm sm:text-xl) */}
                 <div className="mt-3 flex flex-col sm:flex-row sm:items-baseline sm:justify-between gap-1">
                   <div>
-                    <span className="text-2xs font-medium uppercase tracking-normal sm:tracking-wider text-slate-400 block font-mono">
+                    <span className="text-xs font-medium uppercase tracking-normal sm:tracking-wider text-slate-400 block font-mono">
                       Profit Total
                     </span>
                     <p className="font-mono text-sm sm:text-xl font-extrabold text-emerald-500 tracking-tight">
@@ -194,7 +194,7 @@ const CommandCenterComponent: React.FC<CommandCenterProps> = ({
                       content={({ active, payload }) => {
                         if (active && payload && payload.length) {
                           return (
-                            <div className="rounded-lg border border-slate-800 bg-slate-950/90 px-2 py-1 text-[10px] font-mono text-slate-200 shadow">
+                            <div className="rounded-lg border border-slate-800 bg-slate-950/90 px-2 py-1 text-xs font-mono text-slate-200 shadow">
                               ${Number(payload[0].value).toFixed(2)}
                             </div>
                           );

@@ -80,11 +80,11 @@ export const Header: React.FC<HeaderProps> = ({
                 <h1 className="text-base font-extrabold tracking-tight text-slate-100 sm:text-xl leading-heading">
                   AM TEAM <span className="bg-gradient-to-r from-emerald-500 via-cyan-500 to-blue-400 bg-clip-text text-transparent">TRINITY</span>
                 </h1>
-                <span className="hidden rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-2xs font-semibold text-emerald-300 sm:inline-block">
+                <span className="hidden rounded-full border border-emerald-500/30 bg-emerald-500/10 px-2 py-0.5 text-xs font-semibold text-emerald-300 sm:inline-block">
                   FLEET v4.2
                 </span>
               </div>
-              <p className="hidden sm:block text-2xs font-medium text-slate-400 tracking-normal sm:tracking-wider leading-body">
+              <p className="hidden sm:block text-xs font-medium text-slate-400 tracking-normal sm:tracking-wider leading-body">
                 20 Algorithmic Bots Across 4 Master Domains
               </p>
             </div>
@@ -94,7 +94,7 @@ export const Header: React.FC<HeaderProps> = ({
           <div className="flex items-center gap-2 sm:gap-6">
             <div className="flex items-center gap-2 sm:gap-3 rounded-xl border border-slate-800/90 bg-slate-900/80 px-2.5 py-1.5 sm:px-4 sm:py-2 shadow-inner">
               <div className="flex flex-col">
-                <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">
+                <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">
                   Live Equity
                 </span>
                 <div className="flex items-baseline gap-1.5 sm:gap-2">
@@ -102,7 +102,7 @@ export const Header: React.FC<HeaderProps> = ({
                     {formatUsd(account.equity)}
                   </span>
                   <span
-                    className={`inline-flex items-center font-mono text-2xs sm:text-xs font-semibold ${
+                    className={`inline-flex items-center font-mono text-xs sm:text-xs font-semibold ${
                       isPnlPositive ? 'text-emerald-500' : 'text-rose-500'
                     }`}
                   >
@@ -115,8 +115,8 @@ export const Header: React.FC<HeaderProps> = ({
 
               {/* Balanță & P/L pe Desktop */}
               <div className="hidden lg:flex flex-col text-right border-l border-slate-800 pl-3">
-                <span className="text-2xs font-medium text-slate-400">Bal: {formatUsd(account.balance)}</span>
-                <span className="text-2xs font-mono text-emerald-500/90 font-medium">
+                <span className="text-xs font-medium text-slate-400">Bal: {formatUsd(account.balance)}</span>
+                <span className="text-xs font-mono text-emerald-500/90 font-medium">
                   P/L: {isPnlPositive ? '+' : ''}{formatUsd(account.dailyPnl)}
                 </span>
               </div>
@@ -125,11 +125,11 @@ export const Header: React.FC<HeaderProps> = ({
             {/* Desktop Only: Market Sentiment & Risk Score */}
             <div className="hidden lg:flex items-center gap-2">
               <div className="flex flex-col rounded-lg border border-slate-800 bg-slate-900/40 px-2.5 py-1.5 text-center">
-                <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">VIX Volatility</span>
+                <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">VIX Volatility</span>
                 <span className="font-mono text-xs font-bold text-cyan-300">{sentiment.vix} • {sentiment.label}</span>
               </div>
               <div className="flex flex-col rounded-lg border border-slate-800 bg-slate-900/40 px-2.5 py-1.5 text-center">
-                <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">Risk Level</span>
+                <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400">Risk Level</span>
                 <span
                   className={`font-mono text-xs font-bold ${
                     risk.riskScore === 'OPTIMAL' || risk.riskScore === 'LOW' ? 'text-emerald-500' : 'text-amber-500'
@@ -226,13 +226,13 @@ export const Header: React.FC<HeaderProps> = ({
         {isMobileMenuOpen && (
           <div className="sm:hidden border-t border-slate-800/90 bg-slate-950 p-4 space-y-4 animate-in slide-in-from-top-2 duration-200 shadow-2xl">
             {/* Account Info Details */}
-            <div className="grid grid-cols-2 gap-2 rounded-xl border border-slate-800 bg-slate-900/60 p-3 text-xs font-mono">
+            <div className="grid grid-cols-2 gap-2 rounded-xl border border-slate-800 bg-slate-900/60 p-3 text-sm font-mono">
               <div>
-                <span className="text-slate-400 block text-2xs">BALANȚĂ CONT</span>
+                <span className="text-slate-400 block text-xs">BALANȚĂ CONT</span>
                 <span className="font-bold text-slate-200 text-sm">{formatUsd(account.balance)}</span>
               </div>
               <div className="text-right">
-                <span className="text-slate-400 block text-2xs">P/L ZI CURENTĂ</span>
+                <span className="text-slate-400 block text-xs">P/L ZI CURENTĂ</span>
                 <span className={`font-bold text-sm ${isPnlPositive ? 'text-emerald-500' : 'text-rose-500'}`}>
                   {isPnlPositive ? '+' : ''}{formatUsd(account.dailyPnl)}
                 </span>
@@ -240,13 +240,13 @@ export const Header: React.FC<HeaderProps> = ({
             </div>
 
             {/* VIX & Risk Indicators */}
-            <div className="grid grid-cols-2 gap-2 text-xs font-mono">
+            <div className="grid grid-cols-2 gap-2 text-sm font-mono">
               <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-2.5 flex items-center justify-between">
-                <span className="text-slate-400 text-2xs">VIX VOLATILITATE:</span>
+                <span className="text-slate-400 text-xs">VIX VOLATILITATE:</span>
                 <span className="font-bold text-cyan-300">{sentiment.vix}</span>
               </div>
               <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-2.5 flex items-center justify-between">
-                <span className="text-slate-400 text-2xs">RISK FLEET:</span>
+                <span className="text-slate-400 text-xs">RISK FLEET:</span>
                 <span className={`font-bold ${risk.riskScore === 'OPTIMAL' ? 'text-emerald-500' : 'text-amber-500'}`}>
                   {risk.riskScore}
                 </span>

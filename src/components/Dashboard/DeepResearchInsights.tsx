@@ -223,7 +223,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                           {dom.name}
                         </span>
                         {/* 5. Badge VERIFIED STRATEGY cu checkmark */}
-                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/50 bg-emerald-500/15 px-2.5 py-0.5 text-[10px] font-bold text-emerald-300">
+                        <span className="inline-flex items-center gap-1 rounded-full border border-emerald-500/50 bg-emerald-500/15 px-2.5 py-0.5 text-xs font-bold text-emerald-300">
                           <CheckCircle2 className="h-3 w-3 text-emerald-500" />
                           <span>VERIFIED STRATEGY</span>
                         </span>
@@ -239,7 +239,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                     href={dom.url}
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-1 rounded-lg border border-slate-800 bg-slate-900/80 px-2 py-1 text-2xs font-semibold text-slate-400 hover:text-cyan-300 transition-colors"
+                    className="flex items-center gap-1 rounded-lg border border-slate-800 bg-slate-900/80 px-2 py-1 text-xs font-semibold text-slate-400 hover:text-cyan-300 transition-colors"
                     title={`Deschide ${dom.url}`}
                   >
                     <span>Domeniu</span>
@@ -250,7 +250,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                 {/* Profil & Active */}
                 <div className="mt-3 space-y-2">
                   <div className="rounded-xl border border-slate-800/80 bg-slate-950/70 p-3">
-                    <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 block mb-1">
+                    <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-400 block mb-1">
                       Profil & Mediu de Piață:
                     </span>
                     <p className="text-xs text-slate-200 font-medium leading-relaxed">
@@ -264,7 +264,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                       {spec.assets.map((asset) => (
                         <span
                           key={asset}
-                          className="rounded-md border border-slate-800 bg-slate-950 px-2 py-0.5 text-2xs font-bold text-slate-200"
+                          className="rounded-md border border-slate-800 bg-slate-950 px-2 py-0.5 text-xs font-bold text-slate-200"
                         >
                           {asset}
                         </span>
@@ -276,11 +276,11 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                 {/* 5 Strategii Specifice per Bot */}
                 <div className="mt-4 rounded-xl border border-slate-800/80 bg-slate-950/80 p-3.5 space-y-2">
                   <div className="flex items-center justify-between border-b border-slate-800/80 pb-2">
-                    <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-300 flex items-center gap-1.5">
+                    <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-slate-300 flex items-center gap-1.5">
                       <Cpu className="h-3.5 w-3.5 text-cyan-500" />
                       Flota de 5 Algoritmi Specializați
                     </span>
-                    <span className="text-2xs font-mono text-slate-500">5 Boți Aliniați</span>
+                    <span className="text-xs font-mono text-slate-500">5 Boți Aliniați</span>
                   </div>
 
                   <div className="space-y-1.5 pt-1">
@@ -303,7 +303,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                             {botSpec.name}:
                           </span>
                         </div>
-                        <span className="font-mono text-[11px] text-slate-300 sm:text-right">
+                        <span className="font-mono text-xs text-slate-300 sm:text-right">
                           {botSpec.rule}
                         </span>
                       </div>
@@ -316,7 +316,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                   <div className="mt-4 space-y-3 animate-in fade-in duration-300">
                     {/* Descrierea extinsă din Deep Research */}
                     <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-                      <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-cyan-500 block mb-1">
+                      <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-cyan-500 block mb-1">
                         Sinteză Teoretică Deep Research:
                       </span>
                       <p className="text-xs text-slate-300 leading-relaxed">
@@ -326,7 +326,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
 
                     {/* Parametrii Tehnici Cheie */}
                     <div className="rounded-xl border border-slate-800/80 bg-slate-950/70 p-3">
-                      <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-cyan-500 flex items-center gap-1.5 mb-2">
+                      <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-cyan-500 flex items-center gap-1.5 mb-2">
                         <Cpu className="h-3.5 w-3.5" /> Parametri Tehnici Cheie
                       </span>
                       <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs font-mono text-slate-300">
@@ -342,7 +342,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                     {/* Reguli de Angajare & Adaptări Critice */}
                     <div className="grid grid-cols-1 gap-2.5">
                       <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-                        <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-emerald-500 flex items-center gap-1.5 mb-1.5">
+                        <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-emerald-500 flex items-center gap-1.5 mb-1.5">
                           <CheckCircle2 className="h-3.5 w-3.5" /> Reguli de Angajare (Execution Rules)
                         </span>
                         <ul className="space-y-1 text-xs text-slate-300">
@@ -356,7 +356,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                       </div>
 
                       <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3">
-                        <span className="text-2xs font-semibold uppercase tracking-normal sm:tracking-wider text-amber-500 flex items-center gap-1.5 mb-1.5">
+                        <span className="text-xs font-semibold uppercase tracking-normal sm:tracking-wider text-amber-500 flex items-center gap-1.5 mb-1.5">
                           <ShieldCheck className="h-3.5 w-3.5" /> Adaptări Critice & Slippage Guards
                         </span>
                         <ul className="space-y-1 text-xs text-slate-400">
@@ -383,7 +383,7 @@ const DeepResearchInsightsComponent: React.FC<DeepResearchInsightsProps> = ({ do
                   {isExpanded ? <ChevronUp className="h-3.5 w-3.5" /> : <ChevronDown className="h-3.5 w-3.5" />}
                 </button>
 
-                <div className="flex items-center gap-1.5 text-[11px] font-mono text-slate-500">
+                <div className="flex items-center gap-1.5 text-xs font-mono text-slate-500">
                   <ShieldCheck className="h-3.5 w-3.5 text-emerald-500" />
                   <span>Protocol Trinity v4.2</span>
                 </div>

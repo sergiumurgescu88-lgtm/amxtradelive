@@ -82,7 +82,7 @@ export const QuickTradeModal: React.FC<QuickTradeModalProps> = ({
           <div className="mt-5 space-y-4 font-mono">
             {/* Symbol Selection */}
             <div>
-              <label className="text-xs font-bold uppercase tracking-wider text-slate-400 block mb-1.5 font-sans">
+              <label className="text-sm font-bold uppercase tracking-wider text-slate-400 block mb-1.5 font-sans">
                 Activ / Simbol
               </label>
               <select
@@ -101,10 +101,10 @@ export const QuickTradeModal: React.FC<QuickTradeModalProps> = ({
             {/* Lot Size */}
             <div>
               <div className="flex justify-between items-center mb-1.5 font-sans">
-                <label className="text-xs font-bold uppercase tracking-wider text-slate-400">
+                <label className="text-sm font-bold uppercase tracking-wider text-slate-400">
                   Lot Size
                 </label>
-                <span className="text-xs text-slate-400 font-mono">
+                <span className="text-sm text-slate-400 font-mono">
                   Marjă: ~${estimatedMargin.toFixed(0)} USD
                 </span>
               </div>
@@ -136,7 +136,7 @@ export const QuickTradeModal: React.FC<QuickTradeModalProps> = ({
             {/* SL & TP Pips - 5. Input fields: min height 48px, text-base */}
             <div className="grid grid-cols-2 gap-3">
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-rose-500 block mb-1.5 font-sans">
+                <label className="text-sm font-bold uppercase tracking-wider text-rose-500 block mb-1.5 font-sans">
                   Stop Loss (Pips)
                 </label>
                 <input
@@ -147,7 +147,7 @@ export const QuickTradeModal: React.FC<QuickTradeModalProps> = ({
                 />
               </div>
               <div>
-                <label className="text-xs font-bold uppercase tracking-wider text-emerald-500 block mb-1.5 font-sans">
+                <label className="text-sm font-bold uppercase tracking-wider text-emerald-500 block mb-1.5 font-sans">
                   Take Profit (Pips)
                 </label>
                 <input
@@ -159,7 +159,7 @@ export const QuickTradeModal: React.FC<QuickTradeModalProps> = ({
               </div>
             </div>
 
-            <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3.5 text-xs text-slate-400 font-sans flex items-start gap-2">
+            <div className="rounded-xl border border-slate-800 bg-slate-950/60 p-3.5 text-sm text-slate-400 font-sans flex items-start gap-2">
               <ShieldAlert className="h-5 w-5 text-cyan-500 shrink-0 mt-0.5" />
               <span>
                 Ordinul va fi rutat prin WebSocket către nodul de execuție al flotei cu protecție slippage 1.2 pips.
